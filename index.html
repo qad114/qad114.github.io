@@ -1,1 +1,111 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Landing Page</title>
+    <style>
+        :root {
+            --primary-color: #2d3436;
+            --accent-color: #0984e3;
+            --text-color: #636e72;
+            --bg-color: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            margin: 0.5rem 0;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+
+        .bio {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .resume-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .resume-link:hover {
+            background-color: #074b83;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="/profile-pic.jpg" alt="Profile Picture" class="profile-pic">
+        
+        <h2>Hi! I'm</h2>
+        <h1>Hamza Qadri</h1>
+        
+        <p class="bio">
+            I am a Computer Science student at Georgia Tech with concentrations in Intelligence and Systems/Architecture, graduating in May 2026.<br><br>
+            I recently completed a three-semester software engineering co-op at Itential, where I worked on improving metrics observability
+            in the Itential Platform, prototyping new features and internal applications to be added to the platform in the future, and building
+            internal tooling based on Ansible and Terraform to test the process of deploying the platform on companies' infrastructure. Meanwhile,
+            on Georgia Tech’s campus, as a member of the Bits of Good organization, I’ve developed pro bono web applications such as volunteer
+            management systems for local nonprofit organizations.<br><br>
+            My current interests lie particularly in infrastructure, cloud, and distributed systems. Feel free to connect with me on LinkedIn!
+        </p>
+
+        <a href="/Resume.pdf" class="resume-link"">View My Resume</a>
+    </div>
+
+</body>
+</html>
