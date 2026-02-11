@@ -3,109 +3,468 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Landing Page</title>
+    <title>Hamza Qadri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
-            --primary-color: #2d3436;
-            --accent-color: #0984e3;
-            --text-color: #636e72;
-            --bg-color: #f9f9f9;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --nav-glass: rgba(15, 23, 42, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--primary-color);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container {
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 500px;
-            text-align: center;
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--nav-glass);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent-color);
-            margin-bottom: 1.5rem;
+        .logo {
+            font-family: 'Fira Code', monospace;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--accent);
         }
 
-        h1 {
-            margin: 0.5rem 0;
-            font-size: 2rem;
-            color: var(--primary-color);
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Global Layout --- */
+        section {
+            padding: 60px 10%;
+            /* min-height removed */
         }
 
         h2 {
-            margin: 0;
+            font-size: 2rem;
+            margin-bottom: 2rem; /* Reduced from 3rem */
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 200px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Intro Section --- */
+        #intro {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 180px;
+        }
+
+        .mono {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent);
             font-size: 1rem;
-            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
 
-        .bio {
-            color: var(--text-color);
+        .hero-name {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-sub {
+            font-size: clamp(30px, 5vw, 60px);
+            font-weight: 700;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-desc {
+            max-width: 600px;
+            color: var(--text-dim);
             font-size: 1.1rem;
-            margin: 1.5rem 0;
-            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .resume-link {
+        .btn {
             display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 2rem;
-            background-color: var(--accent-color);
-            color: white;
+            padding: 1rem 2rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: transform 0.2s, background-color 0.2s;
+            font-family: 'Fira Code', monospace;
+            border-radius: 4px;
+            transition: background 0.3s;
+            width: fit-content;
         }
 
-        .resume-link:hover {
-            background-color: #074b83;
-            transform: translateY(-2px);
+        .btn:hover {
+            background: rgba(56, 189, 248, 0.1);
         }
 
-        @media (max-width: 600px) {
-            .container {
-                margin: 20px;
-                padding: 2rem;
-            }
+        .social-links {
+            display: flex;
+            gap: 1.5rem; /* Space between icons */
+            margin-top: 2rem; /* Space above social icons */
+        }
+
+        .social-links a {
+            color: var(--text-dim); /* Match dim text color */
+            font-size: 1.8rem; /* Adjust icon size */
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent); /* Accent color on hover */
+        }
+
+        /* --- Experience Section --- */
+        .exp-container {
+            max-width: 800px;
+        }
+
+        .exp-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--bg-card);
+        }
+
+        .exp-item::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .exp-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .exp-company {
+            color: var(--accent);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        .exp-date {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Projects Section --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s, border 0.3s;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border: 1px solid var(--accent);
+        }
+
+        .project-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            list-style: none;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--text-dim);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            section { padding: 80px 5%; }
+        }
+
+        /* --- Skills Section --- */
+        #skills p {
+            max-width: 800px;
+            margin-bottom: 2rem;
+            color: var(--text-dim);
+            text-align: left; /* Ensure text is left-aligned within the max-width */
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            /* max-width: 800px; */
+            width: 100%;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            text-align: center; /* Center skill item text */
+            border: 1px solid transparent;
+            transition: transform 0.3s, border 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border: 1px solid var(--accent);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="/profile-pic.jpg" alt="Profile Picture" class="profile-pic">
-        
-        <h2>Hi! I'm</h2>
-        <h1>Hamza Qadri</h1>
-        
-        <p class="bio">
-            I am a Computer Science student at Georgia Tech with concentrations in Intelligence and Systems/Architecture, graduating in May 2026.<br><br>
-            I recently completed a three-semester software engineering co-op at Itential, where I worked on improving metrics observability
-            in the Itential Platform, prototyping new features and internal applications to be added to the platform in the future, and building
-            internal tooling based on Ansible and Terraform to test the process of deploying the platform on companies' infrastructure. Meanwhile,
-            on Georgia Tech’s campus, as a member of the Bits of Good organization, I’ve developed pro bono web applications such as volunteer
-            management systems for local nonprofit organizations.<br><br>
-            My current interests lie particularly in infrastructure, cloud, and distributed systems. Feel free to connect with me on LinkedIn!
+    <nav>
+        <div class="logo">Hamza Qadri</div>
+        <ul class="nav-links">
+            <li><a href="#intro">About</a></li>
+            <li><a href="#experience">Work Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+
+        </ul>
+    </nav>
+
+    <section id="intro">
+        <p class="mono">Hi, my name is</p>
+        <h1 class="hero-name">Hamza Qadri</h1>
+        <p class="hero-desc">
+            I am a <b>Computer Science</b> student at <b>Georgia Tech</b> with concentrations in
+            Intelligence and Systems/Architecture, graduating in May 2026. After graduation,
+            I'll be joining <b>Google</b> as a <b>Software Engineer</b> in New York.<br><br>
+
+            I recently completed a three-semester software engineering co-op at Itential, where I
+            worked on improving metrics observability in the Itential Platform, prototyping new
+            features and internal applications to be added to the platform in the future, and
+            building internal tooling based on Ansible and Terraform to test the process of
+            deploying the platform on companies' infrastructure. Meanwhile, on Georgia Tech’s
+            campus, as a member of the Bits of Good organization, I’ve developed pro bono web
+            applications such as volunteer management systems for local nonprofit organizations.<br><br>
+
+            My current interests lie in infrastructure, cloud, and distributed systems. Let's connect!
         </p>
+        <a href="/Resume.pdf" class="btn">View my resume!</a>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/shamzaqadri" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/qad114" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:hamzaqadri.careers@gmail.com" target="_blank" aria-label="Email"><i class="fab fa-at"></i></a>
+            <!--<a href="https://leetcode.com/u/qad114/" target="_blank" aria-label="LeetCode"><i class="fas fa-code"></i></a>-->
+        </div>
+    </section>
 
-        <a href="/Resume.pdf" class="resume-link"">View My Resume</a>
-    </div>
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="exp-container">
+            <div class="exp-item">
+                <div class="exp-title">Incoming Software Engineer - GCP</div>
+                <div class="exp-company">Google</div>
+                <div class="exp-date">May 2026</div>
+                <ul>
+                    <li>Aligned with the GCP Data Cloud product area.</li>
+                </ul>
+            </div>
+            <div class="exp-item">
+                <div class="exp-title">Software Engineer Intern - Labs, Platform Engineering</div>
+                <div class="exp-company">Itential</div>
+                <div class="exp-date">May 2025 - December 2025</div>
+                <!--<p>Developed several internal tools including a Terraform-based project to provision
+                AWS EC2 instances and test the Itential Deployer on them. Built prototypes for new
+                features to be added to the platform in the future.</p>-->
+                <ul>
+                    <li>Developed a Terraform-based internal tool and associated GitHub Actions pipeline to automate testing for a critical Ansible playbook.</li>
+                    <li>Configured an on-premises Kubernetes cluster in Proxmox for on-premises performance testing, reducing monthly cloud costs by over $300.</li>
+                    <li>Built a Model Context Protocol server to enable seamless interaction between LLM clients and Itential Platform workflows.</li>
+                </ul>
+            </div>
+            <div class="exp-item">
+                <div class="exp-title">Software Engineer Intern - Product</div>
+                <div class="exp-company">Itential</div>
+                <div class="exp-date">August 2024 - December 2024</div>
+                <ul>
+                    <li>Improved metrics observability in the Itential Platform using Prometheus and Grafana.</li>
+                    <li>Proposed and documented alternative metrics collection approaches such as InfluxDB and VictoriaMetrics to address Prometheus' shortfalls.</li>
+                </ul>
+            </div>
+            <div class="exp-item">
+                <div class="exp-title">Software Engineer Intern - Web</div>
+                <div class="exp-company">VentureDive</div>
+                <div class="exp-date">May 2024 - June 2024</div>
+                <ul>
+                    <li>Built a productivity-focused full-stack web application with a centralized ledger and pie chart visualizations.</li>
+                    <li>Employed WebSockets to enable real-time updates across devices without refreshing the page.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>BuzzCat: Course Catalog Application</h3>
+                <p>A course catalog app that allows Georgia Tech students to discover classes through
+                functionality unavailable in the official catalog, including lightning-fast search, advanced
+                filters, prerequisite trees, and restriction validation.</p>
+                <ul class="tech-list">
+                    <li>Python</li>
+                    <li>C</li>
+                    <li>Bash</li>
+                </ul>
+            </div>
+            <div class="project-card">
+                <h3>FOCUS GA Community Platform</h3>
+                <p>A Reddit-esque volunteer and community management platform for local nonprofit FOCUS Georgia,
+                with support for nested comments, Markdown, profile customization, and Salesforce SSO integration.</p>
+                <ul class="tech-list">
+                    <li>Python</li>
+                    <li>Pandas</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            <div class="project-card">
+                <h3>Ostinato: Music Backing Track Generator</h3>
+                <p>An application that allows musicians, content creators, and other creatives to generate backing tracks
+                for their content with extensive customization options, powered by LLMs and MIDI. Won best project award
+                in its track at HackGT 2023.</p>
+                <ul class="tech-list">
+                    <li>Verilog</li>
+                    <li>C++</li>
+                </ul>
+            </div>
+            <div class="project-card">
+                <h3>YobeBoy: Nintendo Game Boy Emulator</h3>
+                <p>A Nintendo Game Boy emulator capable of playing most of the console's commercial library and passing the majority of a set of CPU instruction accuracy tests.</p>
+                <ul class="tech-list">
+                    <li>Verilog</li>
+                    <li>C++</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Python</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Java</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">C++</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">JavaScript</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">AWS</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Terraform</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Kubernetes</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Docker</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Git</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">React.js</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Next.js</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">MongoDB</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">PostgreSQL</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Prometheus</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">InfluxDB</div>
+            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Grafana</div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Designed & Built by Hamza Qadri &copy; 2026</p>
+    </footer>
+
+    <script>
+        // Simple Smooth Scroll Logic for the Navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
