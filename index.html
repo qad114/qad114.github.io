@@ -76,13 +76,12 @@
 
         /* --- Global Layout --- */
         section {
-            padding: 60px 10%;
-            /* min-height removed */
+            padding: 100px 10%;
         }
 
         h2 {
             font-size: 2rem;
-            margin-bottom: 2rem; /* Reduced from 3rem */
+            margin-bottom: 2rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -98,10 +97,61 @@
 
         /* --- Intro Section --- */
         #intro {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             padding-top: 180px;
+            min-height: 90vh;
+        }
+
+        .intro-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .intro-content {
+            flex: 1;
+        }
+
+        .intro-img {
+            position: relative;
+            max-width: 400px;
+            flex-shrink: 0;
+        }
+
+        .intro-img img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+            filter: grayscale(30%);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            display: block;
+        }
+
+        .intro-img:hover img {
+            filter: none;
+            transform: translate(-4px, -4px);
+        }
+
+        /* Decorative border offset */
+        .intro-img::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            top: 20px;
+            left: 20px;
+            border-radius: 8px;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .intro-img:hover::after {
+            top: 12px;
+            left: 12px;
         }
 
         .mono {
@@ -116,13 +166,6 @@
             font-weight: 800;
             color: var(--text-main);
             line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-sub {
-            font-size: clamp(30px, 5vw, 60px);
-            font-weight: 700;
-            color: var(--text-dim);
             margin-bottom: 1.5rem;
         }
 
@@ -142,7 +185,6 @@
             font-family: 'Fira Code', monospace;
             border-radius: 4px;
             transition: background 0.3s;
-            width: fit-content;
         }
 
         .btn:hover {
@@ -151,23 +193,35 @@
 
         .social-links {
             display: flex;
-            gap: 1.5rem; /* Space between icons */
-            margin-top: 2rem; /* Space above social icons */
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .social-links a {
-            color: var(--text-dim); /* Match dim text color */
-            font-size: 1.8rem; /* Adjust icon size */
+            color: var(--text-dim);
+            font-size: 1.8rem;
             transition: color 0.3s;
         }
 
         .social-links a:hover {
-            color: var(--accent); /* Accent color on hover */
+            color: var(--accent);
         }
 
         /* --- Experience Section --- */
         .exp-container {
             max-width: 800px;
+        }
+
+        .exp-item-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .exp-icon {
+            width: 3rem;
+            height: 3rem;
+            margin-right: 1.5rem;
+            border-radius: 0.5rem;
         }
 
         .exp-item {
@@ -220,6 +274,7 @@
             border: 1px solid transparent;
             display: flex;
             flex-direction: column;
+            text-decoration: none;
         }
 
         .project-card:hover {
@@ -250,6 +305,30 @@
             opacity: 0.8;
         }
 
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: transform 0.3s, border 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border: 1px solid var(--accent);
+        }
+
         /* --- Footer --- */
         footer {
             text-align: center;
@@ -260,41 +339,20 @@
         }
 
         /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .intro-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .hero-desc { margin: 0 auto 3rem auto; }
+            .social-links { justify-content: center; }
+            .intro-img { order: -1; margin-bottom: 50px; }
+            .intro-img::after { left: 15px; top: 15px; }
+        }
         @media (max-width: 768px) {
             .nav-links { display: none; }
             section { padding: 80px 5%; }
-        }
-
-        /* --- Skills Section --- */
-        #skills p {
-            max-width: 800px;
-            margin-bottom: 2rem;
-            color: var(--text-dim);
-            text-align: left; /* Ensure text is left-aligned within the max-width */
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-            /* max-width: 800px; */
-            width: 100%;
-        }
-
-        .skill-item {
-            background: var(--bg-card);
-            padding: 1rem;
-            border-radius: 4px;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            text-align: center; /* Center skill item text */
-            border: 1px solid transparent;
-            transition: transform 0.3s, border 0.3s;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-5px);
-            border: 1px solid var(--accent);
         }
     </style>
 </head>
@@ -307,78 +365,95 @@
             <li><a href="#experience">Work Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
-
         </ul>
     </nav>
 
     <section id="intro">
-        <p class="mono">Hi, my name is</p>
-        <h1 class="hero-name">Hamza Qadri</h1>
-        <p class="hero-desc">
-            I am a <b>Computer Science</b> student at <b>Georgia Tech</b> with concentrations in
-            Intelligence and Systems/Architecture, graduating in May 2026. After graduation,
-            I'll be joining <b>Google</b> as a <b>Software Engineer</b> in New York.<br><br>
+        <div class="intro-container">
+            <div class="intro-content">
+                <p class="mono">Hi, my name is</p>
+                <h1 class="hero-name">Hamza Qadri</h1>
+                <div class="hero-desc">
+                    <p>
+                        I am a <b>Computer Science</b> student at <b>Georgia Tech</b> with concentrations in
+                        Intelligence and Systems/Architecture, graduating in May 2026. After graduation,
+                        I'll be joining <b>Google</b> as a <b>Software Engineer</b> in New York.<br><br>
 
-            I recently completed a three-semester software engineering co-op at Itential, where I
-            worked on improving metrics observability in the Itential Platform, prototyping new
-            features and internal applications to be added to the platform in the future, and
-            building internal tooling based on Ansible and Terraform to test the process of
-            deploying the platform on companies' infrastructure. Meanwhile, on Georgia Tech’s
-            campus, as a member of the Bits of Good organization, I’ve developed pro bono web
-            applications such as volunteer management systems for local nonprofit organizations.<br><br>
+                        I recently completed a three-semester software engineering co-op at Itential, where I
+                        worked on improving metrics observability in the Itential Platform, prototyping new
+                        features and internal applications to be added to the platform in the future, and
+                        building internal tooling based on Ansible and Terraform to test the process of
+                        deploying the platform on companies' infrastructure. Meanwhile, on Georgia Tech’s
+                        campus, as a member of the Bits of Good organization, I’ve developed pro bono web
+                        applications such as volunteer management systems for local nonprofit organizations.<br><br>
 
-            My current interests lie in infrastructure, cloud, and distributed systems. Let's connect!
-        </p>
-        <a href="/Resume.pdf" class="btn">View my resume!</a>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/shamzaqadri" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/qad114" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="mailto:hamzaqadri.careers@gmail.com" target="_blank" aria-label="Email"><i class="fab fa-at"></i></a>
-            <!--<a href="https://leetcode.com/u/qad114/" target="_blank" aria-label="LeetCode"><i class="fas fa-code"></i></a>-->
+                        My current interests lie in infrastructure, cloud, and distributed systems. Let's connect!
+                    </p>
+                </div>
+                <a href="/Resume.pdf" class="btn">View my resume!</a>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/shamzaqadri" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/qad114" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:hamzaqadri.careers@gmail.com" target="_blank" aria-label="Email"><i class="fab fa-at"></i></a>
+                </div>
+            </div>
+
+            <div class="intro-img">
+                <img src="/profile-pic.jpg" alt="Hamza Qadri">
+            </div>
         </div>
     </section>
 
     <section id="experience">
         <h2>Work Experience</h2>
         <div class="exp-container">
-            <div class="exp-item">
-                <div class="exp-title">Incoming Software Engineer - GCP</div>
-                <div class="exp-company">Google</div>
-                <div class="exp-date">May 2026</div>
-                <ul>
-                    <li>Aligned with the GCP Data Cloud product area.</li>
-                </ul>
+            <div class="exp-item-container">
+                <img class="exp-icon" src="google_logo.jpeg">
+                <div class="exp-item">
+                    <div class="exp-title">Incoming Software Engineer - GCP</div>
+                    <div class="exp-company">Google</div>
+                    <div class="exp-date">May 2026</div>
+                    <ul>
+                        <li>Aligned with the GCP Data Cloud product area.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="exp-item">
-                <div class="exp-title">Software Engineer Intern - Labs, Platform Engineering</div>
-                <div class="exp-company">Itential</div>
-                <div class="exp-date">May 2025 - December 2025</div>
-                <!--<p>Developed several internal tools including a Terraform-based project to provision
-                AWS EC2 instances and test the Itential Deployer on them. Built prototypes for new
-                features to be added to the platform in the future.</p>-->
-                <ul>
-                    <li>Developed a Terraform-based internal tool and associated GitHub Actions pipeline to automate testing for a critical Ansible playbook.</li>
-                    <li>Configured an on-premises Kubernetes cluster in Proxmox for on-premises performance testing, reducing monthly cloud costs by over $300.</li>
-                    <li>Built a Model Context Protocol server to enable seamless interaction between LLM clients and Itential Platform workflows.</li>
-                </ul>
+            <div class="exp-item-container">
+                <img class="exp-icon" src="itential_logo.jpeg">
+                <div class="exp-item">
+                    <div class="exp-title">Software Engineer Intern - Labs, Platform Engineering</div>
+                    <div class="exp-company">Itential</div>
+                    <div class="exp-date">May 2025 - December 2025</div>
+                    <ul>
+                        <li>Developed a Terraform-based internal tool and associated GitHub Actions pipeline to automate testing for a critical Ansible playbook.</li>
+                        <li>Configured an on-premises Kubernetes cluster in Proxmox for on-premises performance testing, reducing monthly cloud costs by over $300.</li>
+                        <li>Built a Model Context Protocol server to enable seamless interaction between LLM clients and Itential Platform workflows.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="exp-item">
-                <div class="exp-title">Software Engineer Intern - Product</div>
-                <div class="exp-company">Itential</div>
-                <div class="exp-date">August 2024 - December 2024</div>
-                <ul>
-                    <li>Improved metrics observability in the Itential Platform using Prometheus and Grafana.</li>
-                    <li>Proposed and documented alternative metrics collection approaches such as InfluxDB and VictoriaMetrics to address Prometheus' shortfalls.</li>
-                </ul>
+            <div class="exp-item-container">
+                <img class="exp-icon" src="itential_logo.jpeg">
+                <div class="exp-item">
+                    <div class="exp-title">Software Engineer Intern - Product</div>
+                    <div class="exp-company">Itential</div>
+                    <div class="exp-date">August 2024 - December 2024</div>
+                    <ul>
+                        <li>Improved metrics observability in the Itential Platform using Prometheus and Grafana.</li>
+                        <li>Proposed and documented alternative metrics collection approaches including InfluxDB and VictoriaMetrics to address the loss of data points caused by Prometheus' pull model.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="exp-item">
-                <div class="exp-title">Software Engineer Intern - Web</div>
-                <div class="exp-company">VentureDive</div>
-                <div class="exp-date">May 2024 - June 2024</div>
-                <ul>
-                    <li>Built a productivity-focused full-stack web application with a centralized ledger and pie chart visualizations.</li>
-                    <li>Employed WebSockets to enable real-time updates across devices without refreshing the page.</li>
-                </ul>
+            <div class="exp-item-container">
+                <img class="exp-icon" src="venturedive_logo.jpeg">
+                <div class="exp-item">
+                    <div class="exp-title">Software Engineer Intern - Web</div>
+                    <div class="exp-company">VentureDive</div>
+                    <div class="exp-date">May 2024 - June 2024</div>
+                    <ul>
+                        <li>Built a productivity-focused full-stack web application with a centralized ledger and pie chart visualizations.</li>
+                        <li>Employed WebSockets to enable real-time updates across devices without refreshing the page.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -386,68 +461,70 @@
     <section id="projects">
         <h2>Projects</h2>
         <div class="project-grid">
-            <div class="project-card">
+            <a class="project-card" href="https://github.com/qad114/buzzcat-frontend" target="_blank">
                 <h3>BuzzCat: Course Catalog Application</h3>
-                <p>A course catalog app that allows Georgia Tech students to discover classes through
-                functionality unavailable in the official catalog, including lightning-fast search, advanced
-                filters, prerequisite trees, and restriction validation.</p>
+                <p>A course catalog app that allows Georgia Tech students to discover classes through functionality unavailable in the official catalog, including lightning-fast search and prerequisite trees.</p>
                 <ul class="tech-list">
+                    <li>React.js</li>
+                    <li>PostgreSQL</li>
                     <li>Python</li>
-                    <li>C</li>
-                    <li>Bash</li>
+                    <li>Flask</li>
                 </ul>
-            </div>
-            <div class="project-card">
+            </a>
+            <a class="project-card" href="https://github.com/GTBitsOfGood/focus-ga" target="_blank">
                 <h3>FOCUS GA Community Platform</h3>
                 <p>A Reddit-esque volunteer and community management platform for local nonprofit FOCUS Georgia,
                 with support for nested comments, Markdown, profile customization, and Salesforce SSO integration.</p>
                 <ul class="tech-list">
-                    <li>Python</li>
-                    <li>Pandas</li>
-                    <li>SQL</li>
+                    <li>Next.js</li>
+                    <li>MongoDB</li>
+                    <li>Salesforce SSO</li>
                 </ul>
-            </div>
-            <div class="project-card">
+            </a>
+            <a class="project-card" href="https://github.com/Andethy/ostinato" target="_blank">
                 <h3>Ostinato: Music Backing Track Generator</h3>
-                <p>An application that allows musicians, content creators, and other creatives to generate backing tracks
+               <p>An application that allows musicians, content creators, and other creatives to generate backing tracks
                 for their content with extensive customization options, powered by LLMs and MIDI. Won best project award
                 in its track at HackGT 2023.</p>
                 <ul class="tech-list">
-                    <li>Verilog</li>
-                    <li>C++</li>
+                    <li>React.js</li>
+                    <li>Python</li>
+                    <li>Flask</li>
+                    <li>OpenAI API</li>
                 </ul>
-            </div>
-            <div class="project-card">
+            </a>
+            <a class="project-card" href="https://github.com/qad114/yobeboy" target="_blank">
                 <h3>YobeBoy: Nintendo Game Boy Emulator</h3>
                 <p>A Nintendo Game Boy emulator capable of playing most of the console's commercial library and passing the majority of a set of CPU instruction accuracy tests.</p>
                 <ul class="tech-list">
                     <li>Verilog</li>
                     <li>C++</li>
                 </ul>
-            </div>
+            </a>
         </div>
     </section>
 
     <section id="skills">
         <h2>Skills</h2>
         <div class="skills-grid">
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Python</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Java</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">C++</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">JavaScript</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">AWS</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Terraform</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Kubernetes</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Docker</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Git</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">React.js</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Next.js</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">MongoDB</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">PostgreSQL</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Prometheus</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">InfluxDB</div>
-            <div class="skill-item" style="background: var(--bg-card); padding: 1rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">Grafana</div>
-
+            <div class="skill-item">Python</div>
+            <div class="skill-item">Java</div>
+            <div class="skill-item">C++</div>
+            <div class="skill-item">JavaScript</div>
+            <div class="skill-item">AWS</div>
+            <div class="skill-item">Terraform</div>
+            <div class="skill-item">Ansible</div>
+            <div class="skill-item">Kubernetes</div>
+            <div class="skill-item">Proxmox</div>
+            <div class="skill-item">Docker</div>
+            <div class="skill-item">Git</div>
+            <div class="skill-item">React.js</div>
+            <div class="skill-item">Next.js</div>
+            <div class="skill-item">MongoDB</div>
+            <div class="skill-item">PostgreSQL</div>
+            <div class="skill-item">Prometheus</div>
+            <div class="skill-item">InfluxDB</div>
+            <div class="skill-item">Grafana</div>
         </div>
     </section>
 
@@ -456,7 +533,6 @@
     </footer>
 
     <script>
-        // Simple Smooth Scroll Logic for the Navbar
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
