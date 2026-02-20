@@ -280,11 +280,67 @@
             display: flex;
             flex-direction: column;
             text-decoration: none;
+            position: relative;
+        }
+
+        .project-github-icon {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            transition: color 0.3s, transform 0.3s;
+            z-index: 10;
+        }
+
+        .project-card:hover .project-github-icon {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .project-card-footer {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .project-card-footer {
+            opacity: 0.8;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
             border: 1px solid var(--accent);
+        }
+
+        .project-img-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-img-placeholder {
+            color: var(--text-dim);
+            font-size: 2rem;
+            opacity: 0.2;
         }
 
         .project-card h3 {
@@ -484,7 +540,7 @@
             <div class="skills-grid">
                 <div class="skill-item">Python</div>
                 <div class="skill-item">Java</div>
-                <div class="skill-item">C++</div>
+                <div class="skill-item">C/C++</div>
                 <div class="skill-item">JavaScript</div>
                 <div class="skill-item">AWS</div>
                 <div class="skill-item">Terraform</div>
@@ -508,6 +564,10 @@
         <h2>Projects</h2>
         <div class="project-grid">
             <a class="project-card" href="https://github.com/qad114/buzzcat-frontend" target="_blank">
+                <i class="fab fa-github project-github-icon"></i>
+                <div class="project-img-container">
+                    <img src="buzzcat_preview.jpg" alt="Project Preview">
+                </div>
                 <h3>BuzzCat: Course Catalog Application</h3>
                 <p>A course catalog app that allows Georgia Tech students to discover classes through functionality unavailable in the official catalog, including lightning-fast search and prerequisite trees.</p>
                 <ul class="tech-list">
@@ -516,8 +576,15 @@
                     <li>Python</li>
                     <li>Flask</li>
                 </ul>
+                <div class="project-card-footer">
+                    View on GitHub <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                </div>
             </a>
             <a class="project-card" href="https://github.com/GTBitsOfGood/focus-ga" target="_blank">
+                <i class="fab fa-github project-github-icon"></i>
+                <div class="project-img-container">
+                    <img src="focus_preview.jpg" alt="Project Preview">
+                </div>
                 <h3>FOCUS GA Community Platform</h3>
                 <p>A Reddit-esque volunteer and community management platform for local nonprofit FOCUS Georgia,
                 with support for nested comments, Markdown, profile customization, and Salesforce SSO integration.</p>
@@ -526,8 +593,15 @@
                     <li>MongoDB</li>
                     <li>Salesforce SSO</li>
                 </ul>
+                <div class="project-card-footer">
+                    View on GitHub <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                </div>
             </a>
             <a class="project-card" href="https://github.com/Andethy/ostinato" target="_blank">
+                <i class="fab fa-github project-github-icon"></i>
+                <div class="project-img-container">
+                    <img src="ostinato_preview.jpg" alt="Project Preview">
+                </div>
                 <h3>Ostinato: Music Backing Track Generator</h3>
                <p>An application that allows musicians, content creators, and other creatives to generate backing tracks
                 for their content with extensive customization options, powered by LLMs and MIDI. Won best project award
@@ -538,14 +612,24 @@
                     <li>Flask</li>
                     <li>OpenAI API</li>
                 </ul>
+                <div class="project-card-footer">
+                    View on GitHub <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                </div>
             </a>
             <a class="project-card" href="https://github.com/qad114/yobeboy" target="_blank">
+                <i class="fab fa-github project-github-icon"></i>
+                <div class="project-img-container">
+                    <img src="yobeboy_preview.jpg" alt="Project Preview">
+                </div>
                 <h3>YobeBoy: Nintendo Game Boy Emulator</h3>
                 <p>A Nintendo Game Boy emulator capable of playing most of the console's commercial library and passing the majority of a set of CPU instruction accuracy tests.</p>
                 <ul class="tech-list">
                     <li>C</li>
                     <li>Valgrind</li>
                 </ul>
+                <div class="project-card-footer">
+                    View on GitHub <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                </div>
             </a>
         </div>
     </section>
