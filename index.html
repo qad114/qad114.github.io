@@ -208,6 +208,11 @@
         }
 
         /* --- Experience Section --- */
+        .exp-skills-container {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
         .exp-container {
             max-width: 800px;
         }
@@ -339,6 +344,22 @@
         }
 
         /* Mobile Adjustments */
+        @media (min-width: 992px) {
+            .exp-skills-container {
+                display: grid;
+                grid-template-columns: 3fr 2fr;
+                gap: 8rem;
+                padding: 0 10%;
+                align-items: flex-start;
+            }
+            .exp-skills-container section {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .exp-container {
+                max-width: 100%;
+            }
+        }
         @media (max-width: 992px) {
             .intro-container {
                 flex-direction: column;
@@ -362,9 +383,8 @@
         <div class="logo">Hamza Qadri</div>
         <ul class="nav-links">
             <li><a href="#intro">About</a></li>
-            <li><a href="#experience">Work Experience</a></li>
+            <li><a href="#experience">Experience & Skills</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
         </ul>
     </nav>
 
@@ -404,59 +424,85 @@
         </div>
     </section>
 
-    <section id="experience">
-        <h2>Work Experience</h2>
-        <div class="exp-container">
-            <div class="exp-item-container">
-                <img class="exp-icon" src="google_logo.jpeg">
-                <div class="exp-item">
-                    <div class="exp-title">Incoming Software Engineer - GCP</div>
-                    <div class="exp-company">Google</div>
-                    <div class="exp-date">May 2026</div>
-                    <ul>
-                        <li>Aligned with the GCP Data Cloud product area.</li>
-                    </ul>
+    <div class="exp-skills-container">
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <div class="exp-container">
+                <div class="exp-item-container">
+                    <img class="exp-icon" src="google_logo.jpeg">
+                    <div class="exp-item">
+                        <div class="exp-title">Incoming Software Engineer - GCP</div>
+                        <div class="exp-company">Google</div>
+                        <div class="exp-date">May 2026</div>
+                        <ul>
+                            <li>Aligned with the GCP Data Cloud product area.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="exp-item-container">
+                    <img class="exp-icon" src="itential_logo.jpeg">
+                    <div class="exp-item">
+                        <div class="exp-title">Software Engineer Intern - Labs, Platform Engineering</div>
+                        <div class="exp-company">Itential</div>
+                        <div class="exp-date">May 2025 - December 2025</div>
+                        <ul>
+                            <li>Developed a Terraform-based internal tool and associated GitHub Actions pipeline to automate testing for a critical Ansible playbook.</li>
+                            <li>Configured an on-premises Kubernetes cluster in Proxmox for on-premises performance testing, reducing monthly cloud costs by over $300.</li>
+                            <li>Built a Model Context Protocol server to enable seamless interaction between LLM clients and Itential Platform workflows.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="exp-item-container">
+                    <img class="exp-icon" src="itential_logo.jpeg">
+                    <div class="exp-item">
+                        <div class="exp-title">Software Engineer Intern - Product</div>
+                        <div class="exp-company">Itential</div>
+                        <div class="exp-date">August 2024 - December 2024</div>
+                        <ul>
+                            <li>Improved metrics observability in the Itential Platform using Prometheus and Grafana.</li>
+                            <li>Proposed and documented alternative metrics collection approaches including InfluxDB and VictoriaMetrics to address the loss of data points caused by Prometheus' pull model.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="exp-item-container">
+                    <img class="exp-icon" src="venturedive_logo.jpeg">
+                    <div class="exp-item">
+                        <div class="exp-title">Software Engineer Intern - Web</div>
+                        <div class="exp-company">VentureDive</div>
+                        <div class="exp-date">May 2024 - June 2024</div>
+                        <ul>
+                            <li>Built a productivity-focused full-stack web application with a centralized ledger and pie chart visualizations.</li>
+                            <li>Employed WebSockets to enable real-time updates across devices without refreshing the page.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="exp-item-container">
-                <img class="exp-icon" src="itential_logo.jpeg">
-                <div class="exp-item">
-                    <div class="exp-title">Software Engineer Intern - Labs, Platform Engineering</div>
-                    <div class="exp-company">Itential</div>
-                    <div class="exp-date">May 2025 - December 2025</div>
-                    <ul>
-                        <li>Developed a Terraform-based internal tool and associated GitHub Actions pipeline to automate testing for a critical Ansible playbook.</li>
-                        <li>Configured an on-premises Kubernetes cluster in Proxmox for on-premises performance testing, reducing monthly cloud costs by over $300.</li>
-                        <li>Built a Model Context Protocol server to enable seamless interaction between LLM clients and Itential Platform workflows.</li>
-                    </ul>
-                </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Java</div>
+                <div class="skill-item">C++</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">AWS</div>
+                <div class="skill-item">Terraform</div>
+                <div class="skill-item">Ansible</div>
+                <div class="skill-item">Kubernetes</div>
+                <div class="skill-item">Proxmox</div>
+                <div class="skill-item">Docker</div>
+                <div class="skill-item">Git</div>
+                <div class="skill-item">React.js</div>
+                <div class="skill-item">Next.js</div>
+                <div class="skill-item">MongoDB</div>
+                <div class="skill-item">PostgreSQL</div>
+                <div class="skill-item">Prometheus</div>
+                <div class="skill-item">InfluxDB</div>
+                <div class="skill-item">Grafana</div>
             </div>
-            <div class="exp-item-container">
-                <img class="exp-icon" src="itential_logo.jpeg">
-                <div class="exp-item">
-                    <div class="exp-title">Software Engineer Intern - Product</div>
-                    <div class="exp-company">Itential</div>
-                    <div class="exp-date">August 2024 - December 2024</div>
-                    <ul>
-                        <li>Improved metrics observability in the Itential Platform using Prometheus and Grafana.</li>
-                        <li>Proposed and documented alternative metrics collection approaches including InfluxDB and VictoriaMetrics to address the loss of data points caused by Prometheus' pull model.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="exp-item-container">
-                <img class="exp-icon" src="venturedive_logo.jpeg">
-                <div class="exp-item">
-                    <div class="exp-title">Software Engineer Intern - Web</div>
-                    <div class="exp-company">VentureDive</div>
-                    <div class="exp-date">May 2024 - June 2024</div>
-                    <ul>
-                        <li>Built a productivity-focused full-stack web application with a centralized ledger and pie chart visualizations.</li>
-                        <li>Employed WebSockets to enable real-time updates across devices without refreshing the page.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <section id="projects">
         <h2>Projects</h2>
@@ -501,30 +547,6 @@
                     <li>Valgrind</li>
                 </ul>
             </a>
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-item">Python</div>
-            <div class="skill-item">Java</div>
-            <div class="skill-item">C++</div>
-            <div class="skill-item">JavaScript</div>
-            <div class="skill-item">AWS</div>
-            <div class="skill-item">Terraform</div>
-            <div class="skill-item">Ansible</div>
-            <div class="skill-item">Kubernetes</div>
-            <div class="skill-item">Proxmox</div>
-            <div class="skill-item">Docker</div>
-            <div class="skill-item">Git</div>
-            <div class="skill-item">React.js</div>
-            <div class="skill-item">Next.js</div>
-            <div class="skill-item">MongoDB</div>
-            <div class="skill-item">PostgreSQL</div>
-            <div class="skill-item">Prometheus</div>
-            <div class="skill-item">InfluxDB</div>
-            <div class="skill-item">Grafana</div>
         </div>
     </section>
 
